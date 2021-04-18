@@ -1,0 +1,274 @@
+(* Q1 *)
+(* Write a function only_capitals that takes a string list and returns a string list that 
+has only the strings in the argument that start with an uppercase letter.  
+Assume all strings have at least 1 character.  
+UseList.filter, Char.isUpper, and String.subto make a 1-2 line solution.*)
+(* val only_capitals = fn: string list -> string list *)
+
+(* fun only_capitals xs =
+    List.filter (fn x =>Char.isUpper (String.sub(x,0))) xs; *)
+
+val only_capitals = List.filter (fn x => Char.isUpper (String.sub(x,0)));
+
+
+(* Q2 *)
+(* Write a function longest_string1 that takes a string list and returns the lognest string
+in the list. *)
+(* If the list is empty, return "". In the case of a tie, return the string closest to the 
+begining of the list. Use foldl, String.size, and no recursion (other that the implementation
+of foldl is recursive *)
+
+
+(* fun fold f acc xs = (* means fun fold f = fn acc => fn xs => *)
+    case xs of
+	[] => acc
+      | x::xs' => fold f (f (acc, x)) xs';*)
+(* in foldl f take arguments in the opposite order *)
+fun longest_string1 xs =
+    let
+	fun f(x,acc) =
+	    if (String.size acc) >= (String.size x)
+	    then acc else x
+		
+    in
+	foldl f "" xs
+    end;
+	
+(*  Q3
+Write a function longest_string2 that is exactly like longest_string1 except in the case 
+of ties it returns the string cloest to the end of the list. 
+Your solution should be almost an exact copy of longest_string1. Still use foldl and String.size
+*)
+
+fun longest_string2 xs =
+    let
+	fun f(x, acc) =
+	    if String.size x >= String.size acc
+	    then x else acc
+    in
+	foldl f "" xs
+    end;
+
+
+(* Q4 
+
+Write functions longest_string_helper, longest_string3, and longest_string4 such that:
+
+-) longest_string3 has the same behavior as longest_string1 and longest string4 has the same behavior as 
+longest_string2.
+
+-) longest_string_helper has type (int * int -> bool) -> string list -> string (notice the currying).
+This function will look a lot like longest_string1 and longest_string2 but is more general because it takes a
+function as an argument.
+
+-) if longest_string_helper is passed a function that behaves like > (so it returns true 
+exactly when its first augument is strictly greater that its second), then the function returned 
+has the same behavior as longest_string1
+
+-) longest_string3 and longest_string4 and defiende with val-bingdings and partial applications 
+of longest_string_helper.
+
+*)
+
+fun longest_string_helper compare =
+    fn xs =>
+       let
+	   fun f(x, acc) =
+	       if compare(String.size x, String.size acc)
+	       then x else acc
+       in
+	   foldl f "" xs
+       end;
+
+
+val longest_string3 = longest_string_helper (fn (int1, int2) => int1 > int2);
+val longest_string4 = longest_string_helper (fn (int1, int2) => int1 >= int2);
+
+
+
+(* Q5
+
+Write a function longest_capitalized that takes a string list and returns the longest string in
+the list that begins with an uppercase letter, or "" if there are no such strings. Assume all
+strings have at least 1 character. Use a val-binding and the ML library's o operator for composing function.
+Resolve ties like in problem 2.
+ *)
+
+
+(* val longest_capitalized = fn (xs =>
+    let
+	fun f(x, acc) =
+	    if String.size x >= String.size acc andalso Char.isUpper (String.sub(x,0))
+	    then x else acc
+    in
+	foldl f "" xs
+    end );
+ *)
+
+val longest_capitalized = longest_string1 o only_capitals;
+
+
+
+(*  Q6
+Write a function rev_string that takes a string and returns the string that is the same characters 
+in reverse order. Use ML's o operator, the library function rev for reversing lists, and two library functions
+in the String module. (Browse the module documentation to find the most useful functions.
+*)
+
+val rev_string =  implode o rev o explode;
+
+(* Q7
+Write a function first_answer of type ('a -> 'b option) -> 'a list -> 'b
+(notice the 2 arguments are curried). The first argument should be applied to elements of the second
+argument in order until the first time it returns SOME v for some v and the result of the call to first_answer.
+If the first argument returns NONE for all list elements, then first_answer should raise the exception
+NoAnswer. Hints: Sample solution is 5 lines and does nothing fancy.
+ *)
+
+exception NoAnswer;
+fun first_answer f =
+    let
+	fun first_answer_iter xs =
+	case xs of
+	   [] => raise NoAnswer
+	 | x::xs' =>
+	   case f(x) of
+	       NONE => first_answer_iter xs'
+	     | SOME v => v
+    in
+	first_answer_iter
+    end;
+
+(*  Q8
+Write a function all_answers of type ('a -> 'b list option) -> 'a list -> 'b list option
+(notice the 2 arguments are curried). The first argument should be applied to elements of the second
+argument. If it returns NONE for any element, then the result for all_answers is NONE. Else 
+the calls to the first argument will have produced SOME lst1, SOME lst2, ... SOME lstn and the result of 
+all_answers is SOME lst where lst is lst1, lst2, ... lstn appended together (order doesn't matter).
+Hints: The sample solution is 8 lines. It uses a helper function with an accumulator and uses @. Note 
+all_answer f [] should evalute to some []
+*)
+
+fun all_answers f =
+    let
+	fun all_answers_iter (xs, acc) =
+	case xs of
+	    [] => acc
+	 | x::xs' =>
+	   case f(x) of
+	       NONE => all_answers_iter (xs',acc)
+	     | SOME v =>
+	       (case all_answers_iter(xs',acc) of
+		    NONE => SOME v
+			| SOME lstn  => SOME (v @ lstn))
+    in
+	(fn xs => all_answers_iter (xs, NONE))
+    end;
+
+
+datatype pattern = Wildcard | Variable of string | UnitP | ConstP of int
+		   | TupleP of pattern list | ConstructorP of string * pattern;
+
+datatype valu = Const of int | Unit | Tuple of valu list | Constructor of string * valu;
+
+fun g f1 f2 p =
+    let 
+	val r = g f1 f2 
+    in
+	case p of
+	    Wildcard          => f1 ()
+	  | Variable x        => f2 x
+	  | TupleP ps         => List.foldl (fn (p,i) => (r p) + i) 0 ps
+	  | ConstructorP(_,p) => r p
+	  | _                 => 0
+    end;
+
+
+
+(* Q9 *)
+(* use g to define function count_wildcards that takes a pattern and returns how many Wildcard patterns it contains *)
+val count_wildcards = g (fn _ => 1) (fn _ => 0);
+
+(* use g to define function count_wild_and_variable_lengths that takes a pattern and returns athe number of Wildcard 
+patterns it contains plus the sum of the string lengths of all the variables in the variable patterns it contains.
+(Use String.size, we care only about variable names; the constructor names are not relevant. *)
+val count_wild_and_variable_lengths = g (fn _ => 1) String.size;
+    
+(* use g to define function count_some_var that takes a string and a pattern (as a pair) and returns the number of times 
+the string appear as a variable in the pattern. We care only about vairable names; the constructor names are not relevant*)
+fun count_some_var (s,p) =
+    g (fn _ => 0) (fn str => if s = str then 1 else 0) p;
+
+(* Q10 *)
+(* Write a function check_pat that takes a pattern and returns true if and only if all the variables appearing in the pattern
+are distinct from each other (i.e. use different strings). The constructor names are not relevant. Hints: The sample solution 
+uses two helper functions. The first takes a pattern and returns a list of all the strings it uses for variables. 
+Using foldl with a function that uses @ is useful. The second takes a list of strings and decides if it has repeats. List.exists
+may be useful. Sample solution is 15 lines. These are hints: We are not requiring foldl and List.exists here, 
+but they make it easier. *)
+
+fun check_pat p =
+    let
+	fun gather_strs(p, acc) =
+	    case p of
+		Variable x => x::acc
+	      | ConstructorP(_, p') => gather_strs(p', []) @ acc
+		  | TupleP ps => (List.foldl (fn (p, acc') => (gether_strs p []) @ acc') [] ps) @ acc
+	      | _ => acc
+	fun has_repeats (xs: string list) =
+	    case xs of
+		[] => true
+	      | x::xs' => if List.exists (fn s => s = x) xs'
+			  then false
+			  else has_repeats xs'
+    in
+	(has_repeats o gather_strs) (p, [])
+    end;
+	
+    
+(* Q11 *)
+(* Write a function match that takes a valu * pattern and returns a (string * value) list option,
+namely NONE if the pattern does not match and SOME lst where lst is the list of bindings if it does.
+Note that if the value matches but the pattern has no patterns of form Variable s, 
+then the result is some []. Hints: Sample solution has one case expression with 7 branches.
+The branch for tuples uses all_answers and ListPair.zip. Sample solution is 13 lines. 
+Remember to look above for the rules for what patterns match whtat values, and what bindings they produce.
+These are hint: We are not requiring all_answers and ListPair.zip here, but they make it easier *)
+
+fun match (value, p) =
+    case p of
+	Wildcard => SOME []  (* Wildcard matches everything and produces the empty list of bindings.*)
+      | Variable s  => SOME [(s, value)]  (* Variable s matches any value v and produces the one-element list holding (s,v) *)
+      | UnitP => (* UnitP matches only Unit and produces the empty list of bindings. *)
+	(case value of
+	    Unit => SOME []
+	  | _ => NONE)
+      | ConstP i1 =>  (* ConstP 17 matches only Const 17 and produces the empty list of bindings (and similarly for other integers)*)
+	(case value of
+	    Const i2 => if i1 = i2 then SOME [] else NONE
+	  | _ => NONE)
+      | TupleP ps =>  (* TupleP ps matches a value of the form Tuple vs if ps and vs have the same length and for all i, the ith
+                element of ps matches the ith element of vs. The list of bindings produced is all the lists from 
+                the nested pattern matches appended together *)
+	(case value of
+	    Tuple vs => if List.length ps <> List.length vs then NONE
+			else all_answers match (ListPair.zip(vs,ps))
+	    | _ => NONE)
+      | ConstructorP (s1, p')  =>  (* ConstructorP(s1,p) matches Constructor(s2,v) if s1 and s2 are the same string (you can compare them with =) 
+                and p matches v. The list of bindings produced is the list from the nested pattern match. 
+                We call the strings s1 and s2 the constructor name.*)
+	(case value of
+	    Constructor (s2, v') => if s1 <> s2 then NONE
+				   else match(v', p')
+	  | _ => NONE);
+	 
+		 
+(* Q12 *)
+(* Write a function first_match that takes a value and a list of patterns and returns a 
+(string * valu) list option, namely NONE if no pattern in the list matches or SOME lst where 
+lst is the list of bindings for the first pattern in the list that matches. Use first_answer and a 
+handle-expression. Hints: Sample solution is 3 lines *)
+
+fun first_match v lstp =
+    SOME( first_answer (fn p => match(v, p)) lstp) (* syntax:  first_answer f lstp , f takes one element from lstp, f (p) = match(v,p) *)
+    handle NoAnswer => NONE;

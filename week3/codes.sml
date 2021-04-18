@@ -1,0 +1,523 @@
+(* Introduction to First-Class Functiions *)
+fun double x = 2 * x;
+fun incr x = x + 1;
+val a_tuple = (double, incr, double(incr 7));
+val eighteen = (#1 a_tuple) 9;
+
+
+(* Functions As Arguments *)
+fun increment_n_times_lame(n, x) = (* silly: this computes (n+x) *)
+    if n = 0
+    then x
+    else 1 + increment_n_times_lame(n-1, x);
+
+fun double_n_times_lame(n, x) =
+    if n = 0
+    then x
+    else 2 * double_n_times_lame(n-1,x);
+
+fun nth_tail_lame(n,xs) = (* example 3, [4,8,12,16] -> [16] *)
+    if n = 0
+    then xs
+
+    else tl (nth_tail_lame(n-1, xs));
+
+
+fun n_times(f, n, x) =
+    if n = 0
+    then x
+    else f(n_times(f, n-1, x));
+
+fun increment x = x + 1;
+fun double x = x + x;
+val x1 = n_times(increment, 4, 7);
+val x2 = n_times(double, 4, 7);
+val x3 = n_times(tl, 2, [4,8,12, 16]);
+
+fun addition(n,x) = n_times(increment, n,x);
+fun double_n_times(n,x) = n_times(double, n,x);
+fun nth_tail(n,x) = n_times(tl,n,x);
+
+fun triple x = 3 * x;
+fun triple_n_times(n,x) = n_times(triple, n,x);
+
+(* higer-order functions are often polymorphic based on "whatever type of functioin is passed" but not always "*)
+(* note: a beeter implementationi would be tail-recursive *)
+fun times_until_zero(f, x) =
+    if x = 0 then 0 else 1 + times_until_zero(f, f x);
+(* f(f(f(f....(f x)))) *)
+(* (int -> int) * int -> int *);
+
+(* conversely, some polymorphic functions that are not higher-order *)
+fun len xs =
+    case xs of
+	[] => 0
+      | x::xs' =>  1+ len xs';
+
+
+
+
+(* Anonymous Functions *)
+
+fun triple_n_times_neat (n, x) =
+    let
+	fun triple x = 3 * x
+    in
+	n_times(triple, n, x)
+    end;
+			 
+
+fun triple_n_times_neater (n, x) = n_times(let fun triple x = 3 * x in triple end, n, x);
+
+
+fun triple_n_times_neatest (n, x) = n_times((fn x => 3 * x), n, x); (* "()" is optional *)
+
+(* 
+fun triple x = 3 * x;
+val triple = fn x => 3 * y;
+*)
+
+(* poor style *)
+val triple_n_times_poor = fn (n, x) => n_times(fn y => y * y, n ,x );
+
+
+(* Unnecessary Function Wrapping *)
+
+fun nth_tail_inferior(n, xs) = n_times((fn y => tl y), n, xs);
+fun nth_tail_superior(n, xs) = n_times(tl, n, xs);
+
+fun rev_inferior1 xs = List.rev xs;
+val rev_inferior2 = fn xs => List.rev xs;
+val rev = List.rev; (* recomended *)
+
+(* Map and Filter *)
+
+fun map(f, xs) =
+    case xs of
+	[] => []
+      | x::xs' => (f x) :: map(f, xs');
+
+val x1 = map((fn x=> x + 1), [4, 8, 12, 16]);
+val x2 = map(hd, [[1,2],[3,4],[5,6,7]]);
+(* map: similar with predefined function: List.map
+But it uses currying (coming soon) *)
+
+fun filter(f, xs) =
+    case xs of
+	[] => []
+      | x::xs' => if f x
+		  then x::(filter (f, xs'))
+		  else filter(f, xs');
+
+
+fun is_even v =
+    (v mod 2 = 0);
+
+fun all_even xs = filter(is_even, xs);
+
+fun all_even_snd xs = filter((fn (_,v) => is_even v), xs);
+
+val x3 = all_even [3,4,6,0,13];
+val x4 = all_even_snd [(1,2), (3,4), (4,5), (1,8)];
+(* Similar predefined function: List.filter, But it uses currying (comming soon) *)
+
+
+(* Returning a function *)
+fun double_or_triple f = (* (int -> bool) -> (int -> int) *)
+    if f 7
+    then fn x => 2 * x
+    else fn x => 3 * x;
+
+val double = double_or_triple (fn x => x - 3 = 4);
+val   nine = double_or_triple (fn x => x = 42) 3;
+
+
+datatype exp = Constant of int
+	     | Negate of exp
+	     | Add of exp * exp
+	     | Multiply of exp * exp;
+
+(* given an exp, is every constant in it an even number? *)
+fun true_of_all_constants(f, e) =
+    case e of
+	Constant i => f i
+      | Negate e1 => true_of_all_constants(f, e1)
+      | Add(e1, e2) => true_of_all_constants(f, e1)
+		       andalso true_of_all_constants(f, e2)
+      | Multiply(e1,e2) => true_of_all_constants(f, e1)
+			   andalso true_of_all_constants(f, e2);
+
+fun all_even_exp e = true_of_all_constants((fn x => x mod 2 = 0), e);
+
+(* Lexical Scope and Higher-Oder Functions *)
+(* 1 *) val x = 1; (* x maps to 1 *)
+(* 2 *) fun f y = x + y; (* f maps to a function that adds 1 to its argument *)
+(* 3 *) val x = 2;   (* x maps to 2 *)
+(* 4 *) val y = 3;   (* y maps to 3 *)
+(* 5 *) val z = f (x + y);   (* call the funciton defined on line 2 with 5 *)
+(* Javascript is different in this situation, this is something to do with hoist*)
+
+
+(* first example *)
+val x = 1;
+fun f y =
+    let
+	val x = y + 1
+    in
+	fn z => x + y + z (* take z and return 2y + 1 + z *)
+    end;
+
+
+val x = 3; (* irrelevant *)
+val g = f 4; (* return a function that adds 9 to its argument *)
+val y = 5;  (* irrelevant *) 
+val z = g 6; (* get 9 + 6, i.e. 15 *)
+
+(* second example *)
+fun f g =
+    let
+	val x = 3 (* irrelevant *)
+    in
+	g 2
+    end;
+
+val x = 4;
+
+fun h y = x + y; (* add 4 to its argument *)
+
+val z = f h; (* 6 *)
+
+
+
+(* Why Lexical Scope*)
+(* 
+1. Function meaning does not depend on variable names used: 
+   -Can change body of f to use q everywhere instead of x 
+   -Can remove unused variables
+ 
+2. Functions can be type-checked and reasoned about where defined, instead of where there used.
+3. Closures can easily store the data they need
+*)
+
+fun greaterThanX x = fn y => y > x; (* int -> (int -> boolean) *)
+fun noNegatives xs = filter(greaterThanX ~1, xs);     (* greaterThanX ~1 : int -> bool *)
+fun allGreater (xs, n) = filter(fn x=> x > n, xs);
+
+
+(* Closures and Recomputations  *)
+
+fun allShorterThan1(xs,s) = (* string list * string -> string list *)
+    filter (fn x => String.size x < (print "!";  String.size s), xs);
+
+fun allShorterThan2(xs,s) =
+    let
+	val i = (print "!"; String.size s)
+    in
+	filter(fn x => String.size x < i, xs)
+    end;
+
+
+val _ = print "\nwithAllShorterThan1: ";
+val x1 = allShorterThan1(["1","333","22","4444"], "xxx");
+val _ = print "\nwithAllShorterThan2: ";
+val x2 = allShorterThan2(["1","333","22","4444"], "xxx");
+
+
+(* Fold *)
+
+fun fold(f, acc, xs) =
+    case xs of
+	[] => acc
+      | x::xs => fold(f, f(acc, x), xs);
+
+(* sum list *)
+fun f1 xs = fold((fn (x,y) => x+y), 0, xs);
+
+(* are all list elements non-negative *)
+fun f2 xs = fold((fn (x,y) => x andalso y >= 0), true, xs);
+
+
+
+(* functions passed in can use any "private" data in its environment *)
+(* counting the number of elements between lo and hi, inclusive *)
+fun f3 (xs, lo, hi) =
+    fold((fn (x, y) =>
+	     x + (if y >= lo andalso y <= hi then 1 else 0)),
+	 0, xs);
+
+
+
+(* all string length in xs less than s *)
+fun f4(xs, s) =
+    let
+	val i = String.size s
+    in
+	fold((fn (x,y) => x andalso String.size y < i), true, xs)
+    end;
+
+
+
+(* do all elements of the list produce true when passed to g*)
+fun f5(g, xs) = fold((fn (x, y) => x andalso g y), true, xs);
+
+fun f4again(xs, s) =
+    let
+	val i = String.size s
+    in
+	f5(fn y => String.size y < i, xs)
+    end;
+
+
+(* Closure Idioms: Combining Functions *)
+fun compose(f,g) = fn x => f(g x); (* ('b -> 'c) * ('a -> 'b) -> ('a -> 'c) *)
+
+(* int -> real *)
+fun sqrt_of_abs i = Math.sqrt(Real.fromInt(abs i));
+
+fun sqrt_of_abs i = (Math.sqrt o Real.fromInt o abs) i;
+
+val sqrt_of_abs = Math.sqrt o Real.fromInt o abs;
+
+infix !>;
+fun x !> f = f x;
+
+fun sqrt_of_abs i = i !> abs !> Real.fromInt !> Math.sqrt
+
+val x5 = sqrt_of_abs 3;
+
+fun backup1 (f, g) = fn x => case f x of
+				 NONE => g x
+			       | SOME y => y;
+fun backup2 (f, g) = fn x => f x handle _ => g x;
+
+
+(* Currying *)
+(* Recall every ML function takes exactly one argument *)
+(* Another way: Take one argument and return a functioin that takes 
+another argument and ... *)
+
+(* old way to get the effect of multiple arguments *)
+fun sorted3_tupled (x, y, z) = z >= y andalso y >= x;
+
+val t1 = sorted3_tupled (7,8,9)
+ 
+val sorted3 = fn x => fn y => fn z => z >= y andalso y >= x;
+
+(* fun sorted3 x = fn y => fn z => ... *)
+
+val t2 = ((sorted3 7) 9 ) 11;
+
+(* Syntactic sugar1: e1, e2, e3, ... means (...(e1 e2) e3) e4) *)
+val t3 = sorted3 7 9 11;
+
+(*
+   val wrong1 = sorted3_tupled 7 8 9;
+   val wrong2 = sorted3 (7,8,9);
+*)
+
+(* Syntactic Sugar2: In general, fun f p1 p2 p3 ... = e means fun f p1 = fn p2 => fn p3 => ... => e *)
+
+(* final version*)
+fun sorted3_nicer x y z = z >= y andalso y >= x;
+
+(* final version *)
+val t4 = sorted3_nicer 7 9 11;
+val t5 = ((sorted3_nicer 7) 9) 11;  (* also accepted *)
+
+
+
+(* a more useful example *)
+(* Node: foldl in ML standard-library has f take arguments in the opposite order *)
+fun fold f acc xs = (* means fun fold f = fn acc => fn xs => *)
+    case xs of
+	[] => acc
+      | x::xs' => fold f (f (acc, x)) xs';
+
+
+(* Partial Application *)
+
+(* If a curried function is applied to "too few" arguments, that returns, which is often 
+useful. A powerful idiom (no new sementics) *)
+val is_nonnegative = sorted3 0 0;
+val sum = fold(fn (x,y) => x + y) 0;
+
+(* In fact, not doing this is often a harder-to-notice version of unnecessary function wrapping, 
+as in these inferior versions *)
+fun is_nonnegative_inferior x = sorted3 0 0 x;
+
+fun sum_inferior xs = fold (fn (x,y) => x + y) 0 xs;
+
+(* another example *)
+fun range i j = if i > j then [] else i :: range(i+1) j;
+
+val countup = range 1;
+
+val c1 = countup 6;
+
+fun countup_inferior x = range 1 x;
+
+(* common style is to curry higher-order functions with functions arguments 
+first to enable convenient partial application
+*)
+
+fun exists predicate xs =
+    case xs of
+	[] => false
+      | x::xs' => predicate x orelse exists predicate xs';
+
+val no = exists (fn x => x = 7) [4,11,23];
+
+val hasZero = exists (fn x => x=0);
+
+val incrementalALl = List.map (fn x => x + 1);
+
+(* library functions foldl, List.filter, etc. also curried. *)
+
+val removeZeros = List.filter (fn x => x <> 0);
+
+(* but if you get a strange message about "value restriction", put back in the actually-necessary wrapping or an explicit 
+non-polymorphic type*)
+(* doesn't work for reasons we won't explain here (more later) *)
+(* (only an issue will polymorphic functions) *)
+(* val pairWithOne = List.map (fn x => (x,1));*) (* a' list -> ('a * int) list *)
+
+(* workarounds: *)
+fun pairWithOne1 xs = List.map(fn x => (x,1)) xs;
+
+val pairWithOne2: string list -> (string * int) list = List.map(fn x => (x,1));
+
+(* this function works fine because result is not polymorphic *)
+val incrementAndPairWithOne = List.map(fn x => (x+1,1));
+
+(* Curry Wrapup *)
+
+(* fun curry f = fn x => fn y => f(x,y);*)
+fun curry f x y = f (x,y);
+
+fun uncurry f(x,y) = f x y; (* uncurry foo *)
+
+fun range(i,j) = if i > j then [] else i :: range(i+1, j);
+
+val countup = (curry range) 1;
+
+(* other curry *)
+fun other_curry1 f = fn x => fn y => f y x;
+fun other_curry2 f x y = f y x;
+
+
+(* Another Closure Idiom: Callbacks *)
+val cbs: (int -> unit) list ref = ref [];
+
+fun onKeyEvent f = cbs := f :: (!cbs);
+
+fun onEvent i =
+    let fun loop fs =
+	    case fs of
+		[] => ()
+	      | f::fs' => (f i; loop fs')
+    in loop(!cbs) end;
+
+
+val timesPressed = ref 0;
+val _ = onKeyEvent (fn _ =>
+		       timesPressed := (!timesPressed) + 1);
+
+fun printIfPressed i =
+    onKeyEvent (fn j =>
+		   if i = j
+		   then print ("you pressed " ^ Int.toString i ^ "\n")
+		   else ());
+
+val _ = printIfPressed 4;
+val _ = printIfPressed 11;
+val _ = printIfPressed 23;
+
+
+		      
+(* Standard Library *)
+(* http://www.standardml.org/Basis/manpages.html*)
+
+structure X = List;
+(* signature X = LIST *)
+
+
+(* Abstract Data Types with Closures *)
+(* a set of ints with three operations 
+interface is immutable -- insert returns a new set -- could 
+also have implemented a mutable version using ML's references
+Note: a 1-constructor datatype is an SML trick for recursive type *)
+
+(* in ML, type synonyms can't be recursive *)
+(* type is not recursive *)
+datatype set = S of {insert: int -> set,
+	    member: int -> bool,
+	    size  : unit -> int};
+
+(* implementation of sets: this is the fancy stuff,
+   but clients using this abstraction need not understand it *)
+
+val empty_set =
+    let
+	fun make_set xs = (*xs is "private field" in result *)
+	    let
+		fun contains i = List.exists (fn j => i = j) xs
+	    in
+		S { insert = fn i => if contains i
+				     then make_set xs
+				     else make_set(i::xs),
+		    member = contains,
+		    size = fn () => length xs
+		  }
+	    end
+    in
+	make_set []
+    end;
+	
+
+
+(* val empty_set: set *)
+(* example client *)
+fun use_sets() = (* unit -> int *)
+    let val S s1 = empty_set
+	val S s2 = (#insert s1) 34 (* s1.insert(34) *)
+	val S s3 = (#insert s2) 34
+	val S s4 = #insert s3 19 (* 19, 34 *)
+    in
+	if (#member s4) 42
+	then 99
+	else if (#member s4) 19
+	then 17 + (#size s3) ()  (* return 18 *)
+	else 0
+    end;
+
+
+
+
+(* Closure Idioms Without Closures *)
+
+datatype 'a mylist = Cons of 'a * ('a mylist) | Empty;
+
+fun map f xs =
+    case xs of
+	Empty => Empty
+      | Cons(x, xs) => Cons(f x, map f xs);
+
+
+fun filter f xs =
+    case xs of
+	Empty => Empty
+      | Cons(x, xs) => if f x
+		       then Cons(x, filter f xs)
+		       else filter f xs;
+
+fun length xs =
+    case xs of
+	Empty => 0
+      | Cons(_, xs) => 1 + length xs;
+
+(* One fine way to double all numbers in a list *)
+val doubleAll = map (fn x => x * 2);
+
+(* One way to count Ns in a list *)
+fun countNs (xs, n: int) = length (filter (fn x => x=n) xs);
+

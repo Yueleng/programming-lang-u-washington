@@ -1,0 +1,2247 @@
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+hw2.sml:21.22-21.24 Error: syntax error: replacing  DARROW with  EQUALOP
+
+uncaught exception Compile [Compile: "syntax error"]
+  raised at: ../compiler/Parse/main/smlfile.sml:15.24-15.46
+             ../compiler/TopLevel/interact/evalloop.sml:42.54
+             ../compiler/TopLevel/interact/evalloop.sml:299.20-299.23
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+hw2.sml:21.17-21.19 Error: syntax error: replacing  DARROW with  OP
+
+uncaught exception Compile [Compile: "syntax error"]
+  raised at: ../compiler/Parse/main/smlfile.sml:15.24-15.46
+             ../compiler/TopLevel/interact/evalloop.sml:42.54
+             ../compiler/TopLevel/interact/evalloop.sml:299.20-299.23
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+hw2.sml:19.13-21.36 Error: types of rules don't agree [tycon mismatch]
+  earlier rule(s): string list option -> 'Z option
+  this rule: string list option -> string list
+  in rule:
+    SOME lst => x :: lst
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val it = () : unit
+- val test1 = all_except_option ("string", ["string"]) = SOME []
+= ;
+val test1 = true : bool
+- val test1 = all_except_option ("string", ["string", "abc"]) = SOME ["abc"];
+val test1 = true : bool
+- val test1 = all_except_option ("string", ["PPP", "string", "abc"]);
+val test1 = SOME ["PPP","abc"] : string list option
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- val test1 = all_except_option ("string", ["PPP", "string", "abc"]);
+stdIn:1.14-1.31 Error: unbound variable or constructor: all_except_option
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- val test1 = all_except_option ("string", ["PPP", "string", "abc"]);
+stdIn:1.14-1.31 Error: unbound variable or constructor: all_except_option
+
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+hw2.sml:30.19-30.65 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: string list list
+  operand:         (string * string list) list
+  in expression:
+    get_substitutions1 xs'
+hw2.sml:30.19-30.65 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: 'Z list * 'Z list
+  operand:         string list option * _
+  in expression:
+    all_except_option x @ get_substitutions1 xs'
+hw2.sml:28.5-30.65 Error: case object and rules don't agree [tycon mismatch]
+  rule domain: (string * string list) list
+  object: string list list
+  in expression:
+    (case lsts
+      of nil => nil
+       | :: (x,xs') => all_except_option x @ get_substitutions1 xs')
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+hw2.sml:32.6 Error: syntax error: inserting  VAL
+
+uncaught exception Compile [Compile: "syntax error"]
+  raised at: ../compiler/Parse/main/smlfile.sml:15.24-15.46
+             ../compiler/TopLevel/interact/evalloop.sml:42.54
+             ../compiler/TopLevel/interact/evalloop.sml:299.20-299.23
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+hw2.sml:36.23-36.40 Error: unbound variable or constructor: getsubstituitons1
+hw2.sml:35.15-35.38 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: string list list
+  operand:         (string * string list) list
+  in expression:
+    get_substitutions1 xs'
+hw2.sml:28.5-37.5 Error: case object and rules don't agree [tycon mismatch]
+  rule domain: (string * string list) list
+  object: string list list
+  in expression:
+    (case lsts
+      of nil => nil
+       | :: (x,xs') =>
+           let val <pat> = <exp>
+           in (case xoption
+                of <pat> => <exp>
+                 | <pat> => <exp>)
+           end)
+val it = () : unit
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+hw2.sml:36.23-36.40 Error: unbound variable or constructor: getsubstituitons1
+hw2.sml:35.15-35.38 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: string list list
+  operand:         (string * string list) list
+  in expression:
+    get_substitutions1 xs'
+hw2.sml:28.5-37.5 Error: case object and rules don't agree [tycon mismatch]
+  rule domain: (string * string list) list
+  object: string list list
+  in expression:
+    (case lsts
+      of nil => nil
+       | :: (x,xs') =>
+           let val <pat> = <exp>
+           in (case xoption
+                of <pat> => <exp>
+                 | <pat> => <exp>)
+           end)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+hw2.sml:36.23-36.41 Error: unbound variable or constructor: get_substituitons1
+hw2.sml:35.15-35.38 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: string list list
+  operand:         (string * string list) list
+  in expression:
+    get_substitutions1 xs'
+hw2.sml:28.5-37.5 Error: case object and rules don't agree [tycon mismatch]
+  rule domain: (string * string list) list
+  object: string list list
+  in expression:
+    (case lsts
+      of nil => nil
+       | :: (x,xs') =>
+           let val <pat> = <exp>
+           in (case xoption
+                of <pat> => <exp>
+                 | <pat> => <exp>)
+           end)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+hw2.sml:35.15-35.38 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: string list list
+  operand:         (string * string list) list
+  in expression:
+    get_substitutions1 xs'
+hw2.sml:36.17-36.46 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: string list list
+  operand:         (string * string list) list
+  in expression:
+    get_substitutions1 xs'
+hw2.sml:28.5-37.5 Error: case object and rules don't agree [tycon mismatch]
+  rule domain: (string * string list) list
+  object: string list list
+  in expression:
+    (case lsts
+      of nil => nil
+       | :: (x,xs') =>
+           let val <pat> = <exp>
+           in (case xoption
+                of <pat> => <exp>
+                 | <pat> => <exp>)
+           end)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+hw2.sml:27.48-27.61 Error: non-constructor applied to argument in pattern: substi
+hw2.sml:32.38-32.44 Error: unbound variable or constructor: substi
+hw2.sml:36.47-36.53 Error: unbound variable or constructor: substi
+hw2.sml:35.39-35.45 Error: unbound variable or constructor: substi
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val it = () : unit
+- get_substitutions1([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie","Fred","F"]], "Fred");
+val it = ["Fredrick","Freddie","F"] : string list
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+hw2.sml:51.12-51.48 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: string list list * string
+  operand:         string list list * string * string list
+  in expression:
+    get_substitutions2 (xs',substi,acc)
+hw2.sml:52.23-52.65 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: string list list * string
+  operand:         string list list * string * string list
+  in expression:
+    get_substitutions2 (xs',substi,res @ acc)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val it = () : unit
+- get_substitutions2([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie","Fred","F"]], "Fred");
+val it = ["Freddie","F","Fredrick"] : string list
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val it = () : unit
+-  get_substitutions2([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie","Fred","F"]], "Fred");
+val it = ["Fredrick","Freddie","F"] : string list
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+hw2.sml:62.16-62.33 Error: unbound variable or constructor: get_substituions1
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val it = () : unit
+- similar_names([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie","Fred","F"]], {first="Fred",middle="W", last="Smith"});
+val it =
+  [{first="Fred",last="Smith",middle="W"},
+   {first="Fredrick",last="Smith",middle="W"},
+   {first="Freddie",last="Smith",middle="W"},
+   {first="F",last="Smith",middle="W"}]
+  : {first:string, last:string, middle:string} list
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val it = () : unit
+- card_color((Clubs, Jack))
+= ;
+val it = Black : color
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- card_value((Clubs, Ace));
+stdIn:1.2-1.12 Error: unbound variable or constructor: card_value
+stdIn:1.21-1.24 Error: unbound variable or constructor: Ace
+stdIn:1.14-1.19 Error: unbound variable or constructor: Clubs
+- card_value(Clubs, Ace);
+stdIn:1.2-1.12 Error: unbound variable or constructor: card_value
+stdIn:1.20-1.23 Error: unbound variable or constructor: Ace
+stdIn:1.13-1.18 Error: unbound variable or constructor: Clubs
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val it = () : unit
+- card_value(Clubs, Ace);
+val it = 11 : int
+- card_value(Clubs, 20);
+stdIn:3.1-3.22 Error: operator and operand don't agree [overload conflict]
+  operator domain: card
+  operand:         suit * [int ty]
+  in expression:
+    card_value (Clubs,20)
+- card_value(Clubs, Num 3);
+val it = 3 : int
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val it = () : unit
+- val test7 = remove_card ([(Hearts, Ace)], (Hearts, Ace), IllegalMove);
+val test7 = [] : card list
+- val test7 = remove_card ([(Hearts, Ace), (Hearts, Num 8)], (Hearts, Ace), IllegalMove);
+val test7 = [(Hearts,Num 8)] : card list
+- val test7 = remove_card ([(Hearts, Num 8)], (Hearts, Ace), IllegalMove);
+
+uncaught exception IllegalMove
+  raised at: hw2.sml:102.14
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+hw2.sml:107.20-107.29 Error: non-constructor applied to argument in pattern: card
+hw2.sml:108.10-108.12 Error: unbound variable or constructor: cs
+hw2.sml:112.12-112.14 Error: unbound variable or constructor: ==
+hw2.sml:112.27-112.41 Error: unbound variable or constructor: all_same_color
+hw2.sml:112.2-112.74 Error: operator is not a function [circularity]
+  operator: 'Z
+  in expression:
+    (color1 <errorvar>) color2
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+hw2.sml:107.20-107.29 Error: non-constructor applied to argument in pattern: card
+hw2.sml:108.10-108.12 Error: unbound variable or constructor: cs
+hw2.sml:112.12-112.14 Error: unbound variable or constructor: ==
+hw2.sml:112.27-112.41 Error: unbound variable or constructor: all_same_color
+hw2.sml:112.2-112.74 Error: operator is not a function [circularity]
+  operator: 'Z
+  in expression:
+    (color1 <errorvar>) color2
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+hw2.sml:112.12-112.14 Error: unbound variable or constructor: ==
+hw2.sml:112.27-112.41 Error: unbound variable or constructor: all_same_color
+hw2.sml:112.2-112.74 Error: operator is not a function [circularity]
+  operator: 'Z
+  in expression:
+    (color1 <errorvar>) color2
+hw2.sml:108.5-112.74 Error: case object and rules don't agree [tycon mismatch]
+  rule domain: ((_ -> _) * _) list
+  object: card list
+  in expression:
+    (case cs
+      of nil => true
+       | :: (x,nil) => true
+       | :: ((<pat>,<pat>),:: <pat>) =>
+           if (color1 <exp>) color2
+           then <errorvar> (<exp> :: <exp>)
+           else false)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+hw2.sml:112.12-112.14 Error: unbound variable or constructor: ==
+hw2.sml:112.27-112.41 Error: unbound variable or constructor: all_same_color
+hw2.sml:112.2-112.74 Error: operator is not a function [circularity]
+  operator: 'Z
+  in expression:
+    (color1 <errorvar>) color2
+hw2.sml:108.5-112.74 Error: case object and rules don't agree [tycon mismatch]
+  rule domain: ((_ -> _) * _) list
+  object: card list
+  in expression:
+    (case cs
+      of nil => true
+       | :: (_,nil) => true
+       | :: ((<pat>,<pat>),:: <pat>) =>
+           if (color1 <exp>) color2
+           then <errorvar> (<exp> :: <exp>)
+           else false)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+hw2.sml:112.26-112.40 Error: unbound variable or constructor: all_same_color
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+hw2.sml:112.48-112.83 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: card list
+  operand:         (card * 'Z) list
+  in expression:
+    all_same_color ((suit2,rank2) :: xs')
+hw2.sml:108.5-112.94 Error: case object and rules don't agree [tycon mismatch]
+  rule domain: (card * 'Z) list
+  object: card list
+  in expression:
+    (case cs
+      of nil => true
+       | :: (_,nil) => true
+       | :: ((<pat>,<pat>),:: <pat>) =>
+           if card_color <exp> = card_color <exp>
+           then all_same_color (<exp> :: <exp>)
+           else false)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+hw2.sml:113.61-113.64 Error: unbound variable or constructor: xs'
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val it = () : unit
+- val test8 = all_same_color [(Hearts, Ace), (Hearts, Ace)];
+val test8 = true : bool
+- val test8 = all_same_color [(Hearts, Ace), (Clubs, Ace)];
+val test8 = false : bool
+- val test8 = all_same_color [(Hearts, Ace), (Diamonds, Ace)];
+val test8 = true : bool
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val it = () : unit
+- val test9 = sum_cards [(Clubs, Num 2),(Clubs, Num 2)];
+val test9 = 4 : int
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- val test9 = sum_cards [(Clubs, Num 2),(Clubs, Num 2)];
+stdIn:1.14-1.23 Error: unbound variable or constructor: sum_cards
+stdIn:1.48-1.51 Error: unbound variable or constructor: Num
+stdIn:1.41-1.46 Error: unbound variable or constructor: Clubs
+stdIn:1.33-1.36 Error: unbound variable or constructor: Num
+stdIn:1.26-1.31 Error: unbound variable or constructor: Clu
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+hw2.sml:133.26-133.39 Error: unbound variable or constructor: all_same_colr
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val it = () : unit
+- val test11 = officiate ([(Hearts, Num 2),(Clubs, Num 4)],[Draw], 15);
+val test11 = 6 : int
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val it = () : unit
+- val test12 = officiate ([(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Spades,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        42);
+
+uncaught exception IllegalMove
+  raised at: hw2.sml:149.28-149.39
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val it = () : unit
+- val test12 = officiate ([(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Spades,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        42);
+val test12 = 1 : int
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- val test12 = officiate ([(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Spades,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        42) = 3;
+stdIn:1.15-1.24 Error: unbound variable or constructor: officiate
+stdIn:2.46-2.50 Error: unbound variable or constructor: Draw
+stdIn:2.41-2.45 Error: unbound variable or constructor: Draw
+stdIn:2.36-2.40 Error: unbound variable or constructor: Draw
+stdIn:2.31-2.35 Error: unbound variable or constructor: Draw
+stdIn:2.26-2.30 Error: unbound variable or constructor: Draw
+stdIn:1.72-1.75 Error: unbound variable or constructor: Ace
+stdIn:1.65-1.71 Error: unbound variable or constructor: Spades
+stdIn:1.59-1.62 Error: unbound variable or constructor: Ace
+stdIn:1.53-1.58 Error: unbound variable or constructor: ClubstdIn:1.47-1.50 Error: unbound variable or constructor: Ace
+stdIn:1.40-1.46 Error: unbound variable or constructor: Spades
+stdIn:1.34-1.37 Error: unbound variable or constructor: Ace
+stdIn:1.28-1.33 Error: unbound variable or constructor: Clubs
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val it = () : unit
+- val test12 = officiate ([(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Spades,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        42) = 3;
+val test12 = false : bool
+-
+val test13 = ((officiate([(Clubs,Jack),(Spades,Num(8))],
+                         [Draw,Discard(Hearts,Jack)],
+                         42);
+               false) 
+              handle IllegalMove => true);
+val test13 = true : bool
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+hw2.sml:177.34-177.36 Error: syntax error: replacing  DARROW with  RPAREN
+
+uncaught exception Compile [Compile: "syntax error"]
+  raised at: ../compiler/Parse/main/smlfile.sml:15.24-15.46
+             ../compiler/TopLevel/interact/evalloop.sml:42.54
+             ../compiler/TopLevel/interact/evalloop.sml:299.20-299.23
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+hw2.sml:176.82 Error: syntax error: inserting  RPAREN
+
+uncaught exception Compile [Compile: "syntax error"]
+  raised at: ../compiler/Parse/main/smlfile.sml:15.24-15.46
+             ../compiler/TopLevel/interact/evalloop.sml:42.54
+             ../compiler/TopLevel/interact/evalloop.sml:299.20-299.23
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+hw2.sml:176.22-176.111 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: int * int * int
+  operand:         'Z * 'Z
+  in expression:
+    better
+      (score_iter (cs',goal,<exp> :: <exp>),
+       score_iter (cs',goal,<exp> :: <exp>))
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+hw2.sml:176.28-176.111 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: card list * card list
+  operand:         'Z list * int * (suit * rank) list
+  in expression:
+    score_iter (cs',goal,(suit,Num <exp>) :: acc)
+hw2.sml:176.28-176.111 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: card list * card list
+  operand:         'Z list * int * (suit * rank) list
+  in expression:
+    score_iter (cs',goal,(suit,Ace) :: acc)
+hw2.sml:177.38-177.78 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: card list * card list
+  operand:         'Z list * int * (suit * rank) list
+  in expression:
+    score_iter (cs',goal,(suit,rank) :: acc)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+hw2.sml:176.28-176.111 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: card list * card list
+  operand:         'Z list * int * (suit * rank) list
+  in expression:
+    score_iter (cs',goal,(suit,Num <exp>) :: acc)
+hw2.sml:176.28-176.111 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: card list * card list
+  operand:         'Z list * int * (suit * rank) list
+  in expression:
+    score_iter (cs',goal,(suit,Ace) :: acc)
+hw2.sml:177.38-177.78 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: card list * card list
+  operand:         'Z list * int * (suit * rank) list
+  in expression:
+    score_iter (cs',goal,(suit,rank) :: acc)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+hw2.sml:177.38-177.78 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: card list * card list
+  operand:         card list * int * (suit * rank) list
+  in expression:
+    score_iter (cs',goal,(suit,rank) :: acc)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val it = () : unit
+- score_challeng(([(Hearts, Num 2),(Clubs, Num 4)],10);
+= ;
+= 
+= score_challenge(([(Hearts, Num 2),(Clubs, Num 4)],10);
+= 
+= 
+= 
+= 
+= 
+= score_challenge([(Hearts, Num 2),(Clubs, Num 4)],10);
+= 
+= 
+= stdIn:3.1-5.16 Error: syntax error: deleting  SEMICOLON ID
+stdIn:14.1 Error: syntax error found at EOF
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val it = () : unit
+- score_challenge([(Hearts, Num 2),(Clubs, Num 4)],10);
+val it = 4 : int
+- score_challenge([(Hearts, Ace),(Clubs, Num 4)],10);
+val it = 5 : int
+- score_challenge([(Hearts, Ace),(Clubs, Num 8)],10);
+val it = 9 : int
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- score_challenge([(Hearts, Ace),(Clubs, Num 8)],10);
+stdIn:1.2-1.17 Error: unbound variable or constructor: score_challenge
+stdIn:1.41-1.44 Error: unbound variable or constructor: Num
+stdIn:1.34-1.39 Error: unbound variable or constructor: Clubs
+stdIn:1.28-1.31 Error: unbound variable or constructor: Ace
+stdIn:1.20-1.26 Error: unbound variable or constructor: Hearts
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val it = () : unit
+- score_challenge([(Hearts, Ace),(Clubs, Num 8)],10);
+val it = 1 : int
+- score_challenge([(Hearts, Ace),(Clubs, Ace)],10);
+val it = 8 : int
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val it = () : unit
+- score_challenge([(Hearts, Ace),(Clubs, Ace)],10);
+val it = 8 : int
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- score_challenge([(Hearts, Ace),(Clubs, Ace)],10);
+stdIn:1.2-1.17 Error: unbound variable or constructor: score_challenge
+stdIn:1.41-1.44 Error: unbound variable or constructor: Ace
+stdIn:1.34-1.39 Error: unbound variable or constructor: Clubs
+stdIn:1.28-1.31 Error: unbound variable or constructor: Ace
+stdIn:1.20-1.26 Error: unbound variable or constructor: Hearts
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+hw2.sml:164.44-164.50 Error: unbound variable or constructor: socre1
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val it = () : unit
+- score_challenge([(Hearts, Ace),(Clubs, Ace)],10);
+val it = 2 : int
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+val it = () : unit
+- val test12 = officiate_challenge ([(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Spades,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        42);
+val test12 = 1 : int
+- val test12 = officiate_challenge ([(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Spades,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        34);
+val test12 = 0 : int
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+hw2.sml:147.35 Error: syntax error: inserting  IF
+hw2.sml:155.5 Error: syntax error: inserting  LET
+hw2.sml:157.8 Error: syntax error: inserting  LET
+hw2.sml:176.41 Error: syntax error: inserting  IF
+hw2.sml:187.5 Error: syntax error: inserting  LET
+hw2.sml:189.8 Error: syntax error: inserting  LET
+hw2.sml:197.6 Error: syntax error: inserting  ELSE
+hw2.sml:207.1 Error: syntax error found at EOF
+
+uncaught exception Compile [Compile: "syntax error"]
+  raised at: ../compiler/Parse/main/smlfile.sml:15.24-15.46
+             ../compiler/TopLevel/interact/evalloop.sml:42.54
+             ../compiler/TopLevel/interact/evalloop.sml:299.20-299.23
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+hw2.sml:176.9-176.24 Error: unbound variable or constructor: sum_cards_smart
+hw2.sml:170.3-172.52 Error: types of rules don't agree [tycon mismatch]
+  earlier rule(s): rank -> int
+  this rule: card -> int
+  in rule:
+    rank => card_value rank + sum_card_smart cs'
+hw2.sml:170.3-172.52 Error: case object and rules don't agree [tycon mismatch]
+  rule domain: rank
+  object: card
+  in expression:
+    (case c
+      of Ace => 1 + sum_card_smart cs'
+       | rank => card_value rank + sum_card_smart cs')
+val it = () : unit- 
+- 
+- 
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+hw2.sml:171.18-171.32 Error: unbound variable or constructor: sum_card_smart
+hw2.sml:170.3-172.53 Error: types of rules don't agree [tycon mismatch]
+  earlier rule(s): rank -> [+ ty]
+  this rule: card -> int
+  in rule:
+    rank => card_value rank + sum_cards_smart cs'
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+hw2.sml:170.3-172.53 Error: types of rules don't agree [tycon mismatch]
+  earlier rule(s): rank -> int
+  this rule: card -> int
+  in rule:
+    rank => card_value rank + sum_cards_smart cs'
+hw2.sml:170.3-172.53 Error: case object and rules don't agree [tycon mismatch]
+  rule domain: rank
+  object: card
+  in expression:
+    (case c
+      of Ace => 1 + sum_cards_smart cs'
+       | rank => card_value rank + sum_cards_smart cs')
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+hw2.sml:197.6 Error: syntax error: inserting  ELSE
+
+uncaught exception Compile [Compile: "syntax error"]
+  raised at: ../compiler/Parse/main/smlfile.sml:15.24-15.46
+             ../compiler/TopLevel/interact/evalloop.sml:42.54
+             ../compiler/TopLevel/interact/evalloop.sml:299.20-299.23
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+val it = () : unit
+- val test12 = officiate ([(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Spades,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        20)
+= ;
+val test12 = 1 : int
+- val test12 = officiate ([(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Diamonds,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        20)
+= ;
+val test12 = 1 : int
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+val it = () : unit
+- val test12 = officiate ([(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Diamonds,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        20);
+val test12 = 1 : int
+- score([(Clubs, Ace), (Diamonds, Ace)], 20);
+val it = 2 : int
+- officiate ([(Clubs,Ace),(Diamonds,Ace),(Clubs,Ace),(Diamonds,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        20);
+val it = 2 : int
+- officiate_challenge ([(Clubs,Ace),(Diamonds,Ace),(Clubs,Ace),(Diamonds,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        20);
+val it = 4 : int
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:215.6-218.12 Error: syntax error: deleting  IN END FUN
+hw2.sml:219.6 Error: syntax error: inserting  LPAREN
+hw2.sml:235.40-235.42 Error: syntax error: replacing  DARROW with  EQUALOP
+hw2.sml:237.2 Error: syntax error: inserting  LET
+hw2.sml:252.1 Error: syntax error found at EOF
+
+uncaught exception Compile [Compile: "syntax error"]
+  raised at: ../compiler/Parse/main/smlfile.sml:15.24-15.46
+             ../compiler/TopLevel/interact/evalloop.sml:42.54
+             ../compiler/TopLevel/interact/evalloop.sml:299.20-299.23
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:237.40-237.42 Error: syntax error: replacing  DARROW with  EQUALOP
+
+uncaught exception Compile [Compile: "syntax error"]
+  raised at: ../compiler/Parse/main/smlfile.sml:15.24-15.46
+             ../compiler/TopLevel/interact/evalloop.sml:42.54
+             ../compiler/TopLevel/interact/evalloop.sml:299.20-299.23
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:237.8-237.10 Error: syntax error: replacing  DARROW with  OP
+
+uncaught exception Compile [Compile: "syntax error"]
+  raised at: ../compiler/Parse/main/smlfile.sml:15.24-15.46
+             ../compiler/TopLevel/interact/evalloop.sml:42.54
+             ../compiler/TopLevel/interact/evalloop.sml:299.20-299.23
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:235.4-237.68 Warning: match nonexhaustive
+          NONE => ...
+          SOME (Discard d,new_held_cards) => ...
+  
+val careful_player = fn : card list * int -> 'a list
+val it = () : unit
+- careful_player([(Hearts, Ace),(Clubs, Num 8)],10);
+stdIn:2.1-2.50 Warning: type vars not generalized because of
+   value restriction are instantiated to dummy types (X1,X2,...)
+val it = [] : ?.X1 list
+
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- careful_player([(Hearts, Ace),(Clubs, Num 8)],10);
+stdIn:1.2-1.16 Error: unbound variable or constructor: careful_player
+stdIn:1.40-1.43 Error: unbound variable or constructor: Num
+stdIn:1.33-1.38 Error: unbound variable or constructor: Clubs
+stdIn:1.27-1.30 Error: unbound variable or constructor: Ace
+stdIn:1.19-1.25 Error: unbound variable or constructor: Hearts
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:234.4-236.70 Warning: match nonexhaustive
+          NONE => ...
+          SOME (Discard d,new_held_cards) => ...
+  
+val careful_player = fn : card list * int -> 'a list
+val it = () : unit
+- careful_player([(Hearts, Ace),(Clubs, Num 8)],10);
+stdIn:2.1-2.50 Warning: type vars not generalized because of
+   value restriction are instantiated to dummy types (X1,X2,...)
+val it = [] : ?.X1 list
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:234.4-236.55 Warning: match nonexhaustive
+          NONE => ...
+          SOME (Discard d) => ...
+  
+val careful_player = fn : card list * int -> 'a list
+val it = () : unit- 
+- 
+- 
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:217.3-217.31 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: card list * card
+  operand:         card list * card * 'Z list
+  in expression:
+    discard_draw_iter (cs,c,nil)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:217.3-217.31 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: card list * card
+  operand:         card list * card * 'Z list
+  in expression:
+    discard_draw_iter (cs,c,nil)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:228.4-230.55 Warning: match nonexhaustive
+          NONE => ...
+          SOME (Discard d) => ...
+  
+val careful_player = fn : card list * int -> 'a list
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:214.12-214.40 Error: operator and operand don't agree [tycon mismatch]
+  operator domain: card list * card
+  operand:         card list * card * card list
+  in expression:
+    discard_draw (cs',c,d :: acc)
+val it = () : unit
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:235.4-237.55 Warning: match nonexhaustive
+          NONE => ...
+          SOME (Discard d) => ...
+  
+val careful_player = fn : card list * int -> 'a list
+val it = () : unit
+- careful_player([(Hearts, Ace),(Clubs, Num 8)],10);
+stdIn:2.1-2.50 Warning: type vars not generalized because of
+   value restriction are instantiated to dummy types (X1,X2,...)
+
+- 
+
+Process sml finished
+Standard ML of New Jersey v110.80 [built: Thu Aug 18 15:00:00 2016]
+- use "hw2.sml";
+[opening hw2.sml]
+val same_string = fn : string * string -> bool
+val all_except_option = fn : string * string list -> string list option
+val get_substitutions1 = fn : string list list * string -> string list
+val get_substitutions2 = fn : string list list * string -> string list
+val similar_names = fn
+  : string list list * {first:string, last:'a, middle:'b}
+    -> {first:string, last:'a, middle:'b} list
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Ace | Jack | King | Num of int | Queen
+type card = suit * rank
+datatype color = Black | Red
+datatype move = Discard of suit * rank | Draw
+exception IllegalMove
+val card_color = fn : card -> color
+val card_value = fn : card -> int
+val remove_card = fn : card list * card * exn -> card list
+val all_same_color = fn : card list -> bool
+val sum_cards = fn : card list -> int
+val score = fn : card list * int -> int
+val officiate = fn : card list * move list * int -> int
+val score_challenge = fn : card list * int -> int
+val officiate_challenge = fn : card list * move list * int -> int
+hw2.sml:235.4-237.55 Warning: match nonexhaustive
+          NONE => ...
+          SOME (Discard d) => ...
+  
+val careful_player = fn : card list * int -> 'a list
+val it = () : unit
+- fun discard_draw(cs: card list, c: card) =
+	    let
+		fun discard_draw_iter(cs: card list, c: card, acc: card list) =
+		    case cs of
+			[] => NONE
+		         | d :: cs' => if sum_cards cs' + card_value c + sum_cards acc = goal then SOME (Discard d)
+				  else discard_draw_iter(cs', c, d::acc)
+	    in
+		discard_draw_iter(cs, c, [])
+	    end;
+stdIn:7.76-7.80 Error: unbound variable or constructor: goal
+- val goal = 10
+= ;
+val goal = 10 : int
+- fun discard_draw(cs: card list, c: card) =
+	    let
+		fun discard_draw_iter(cs: card list, c: card, acc: card list) =
+		    case cs of
+			[] => NONE
+		         | d :: cs' => if sum_cards cs' + card_value c + sum_cards acc = goal then SOME (Discard d)
+				  else discard_draw_iter(cs', c, d::acc)
+	    in
+		discard_draw_iter(cs, c, [])
+	    end;
+val discard_draw = fn : card list * card -> move option
+- discard_draw([(Hearts, Ace),(Clubs, Num 8)],10);
+stdIn:23.1-23.48 Error: operator and operand don't agree [overload conflict]
+  operator domain: card list * card
+  operand:         (suit * rank) list * [int ty]
+  in expression:
+    discard_draw ((Hearts,Ace) :: (<exp>,<exp>) :: nil,10)
+- discard_draw([(Hearts, Ace),(Clubs, Num 8)], (Hearts, Ace));
+val it = NONE : move option
+- discard_draw([(Hearts, Ace),(Clubs, Num 8)], (Hearts, Num 2));
+val it = SOME (Discard (Hearts,Ace)) : move option
+- val test1 = all_except_option ("string", ["string"]) = SOME []
+
+val test2 = get_substitutions1 ([["foo"],["there"]], "foo") = []
+
+val test3 = get_substitutions2 ([["foo"],["there"]], "foo") = []
+
+val test4 = similar_names ([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie","Fred","F"]], {first="Fred", middle="W", last="Smith"}) =
+	    [{first="Fred", last="Smith", middle="W"}, {first="Fredrick", last="Smith", middle="W"},
+	     {first="Freddie", last="Smith", middle="W"}, {first="F", last="Smith", middle="W"}]
+
+val test5 = card_color (Clubs, Num 2) = Black
+
+val test6 = card_value (Clubs, Num 2) = 2
+
+val test7 = remove_card ([(Hearts, Ace)], (Hearts, Ace), IllegalMove) = []
+
+val test8 = all_same_color [(Hearts, Ace), (Hearts, Ace)] = true
+
+val test9 = sum_cards [(Clubs, Num 2),(Clubs, Num 2)] = 4
+
+val test10 = score ([(Hearts, Num 2),(Clubs, Num 4)],10) = 4
+
+val test11 = officiate ([(Hearts, Num 2),(Clubs, Num 4)],[Draw], 15) = 6
+
+val test12 = officiate ([(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Spades,Ace)],
+                        [Draw,Draw,Draw,Draw,Draw],
+                        42)
+             = 3
+
+val test13 = ((officiate([(Clubs,Jack),(Spades,Num(8))],
+                         [Draw,Discard(Hearts,Jack)],
+                         42);
+               false) 
+              handle IllegalMove => true)
+             ;
+val test1 = true : bool
+val test2 = true : bool
+val test3 = true : bool
+val test4 = true : bool
+val test5 = true : bool
+val test6 = true : bool
+val test7 = true : bool
+val test8 = true : bool
+val test9 = true : bool
+val test10 = true : bool
+val test11 = true : bool
+val test12 = false : bool
+val test13 = true : bool
+- 
