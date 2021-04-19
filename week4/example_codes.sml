@@ -22,4 +22,15 @@ fun first_larger (i1,i2) =
     if i1 <= 0 orelse i2 <= 0
     then raise InvariantViolated    else (i1 - i2) > 0
 
-end
+end;
+
+
+
+fun foo f x y z =
+    if x >= y
+    then (f z)
+    else foo f y x (tl z);
+
+
+   
+fun baz f a b c d e = (f (a ^ b))::(c + d)::e;
