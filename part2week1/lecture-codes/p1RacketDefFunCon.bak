@@ -1,0 +1,7 @@
+#lang racket
+
+
+(provided (all-defined-out))
+
+;basic definitions
+(define s "hello")
