@@ -27,7 +27,7 @@ class MyRational
 
   def to_s2 # using some unimportant syntax and a slightly different algorithm
     dens = ""
-    dens = "/" + @den.to_s if @den != 1
+    dens = "/" + @den.to_s if @den != 1 # funny if syntax
     @num.to_s + dens
   end
 

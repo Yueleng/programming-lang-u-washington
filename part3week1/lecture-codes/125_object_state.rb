@@ -38,8 +38,8 @@ class C
 
   Dans_Age = 38
 
-  def self.reset_bar
-    @@bar = 0
+  def self.reset_bar ## class methods,
+    @@bar = 0 ## class variables, shared by all instances of the class.
   end
 
   def initialize(f=0)
