@@ -5,12 +5,11 @@ require_relative './hw6graphics'
 
 # class responsible for the pieces and their movements
 class Piece 
-  
   # creates a new Piece from the given point array, holding the board for 
   # determining if movement is possible for the piece, and gives the piece a 
   # color, rotation, and starting position.
   def initialize (point_array, board)
-    # all posible rotations, in fact: array of point array
+    # all posible rotations of given piece
     @all_rotations = point_array
     # get a random sample from all_rotations for next init rotation.
     @rotation_index = (0..(@all_rotations.size-1)).to_a.sample
@@ -20,12 +19,11 @@ class Piece
     @base_position = [5, 0] # [column, row]
     # board from param
     @board = board
-    # is moved or not? what for 
-    # A: is movable or not
+    # is last move successful?
     @moved = true
   end
 
-  # return the current rotation
+  # return the current rotation piece
   def current_rotation
     @all_rotations[@rotation_index]
   end
@@ -68,7 +66,7 @@ class Piece
       # for every point, 
       if !(@board.empty_at([posns[0] + delta_x + @base_position[0],
                             posns[1] + delta_y + @base_position[1]]));
-        moved = false;  
+        moved = false;
       end
     }
     # if movable, then update @base_position and @rotation_index after move
@@ -81,34 +79,43 @@ class Piece
     moved
   end
 
-  # class method to figure out the different rotations of the provided piece
+  # return different rotations of the provided piece
   def self.rotations (point_array)
-    rotate1 = point_array.map {|x,y| [-y,x]}  
-    rotate2 = point_array.map {|x,y| [-x,-y]} 
+    # rotate 90 degree clockwise
+    rotate1 = point_array.map {|x,y| [-y,x]}
+    # rotate 180 degree clockwise
+    rotate2 = point_array.map {|x,y| [-x,-y]}
+    # rotate 270 degree clockwise
     rotate3 = point_array.map {|x,y| [y,-x]}
 
     # return different rotations given point_array
     [point_array, rotate1, rotate2, rotate3]
   end
 
-  # class method to choose the next piece
+  # choose the next piece
   def self.next_piece (board)
     Piece.new(All_Pieces.sample, board)
   end
   
-  # class array holding all the pieces and their rotations
-  All_Pieces = [[[[0, 0], [1, 0], [0, 1], [1, 1]]],  # square (only needs one)
-               rotations([[0, 0], [-1, 0], [1, 0], [0, -1]]), # T
-               [[[0, 0], [-1, 0], [1, 0], [2, 0]], # long (only needs two)
-               [[0, 0], [0, -1], [0, 1], [0, 2]]],
-               rotations([[0, 0], [0, -1], [0, 1], [1, 1]]), # L
-               rotations([[0, 0], [0, -1], [0, 1], [-1, 1]]), # inverted L
-               rotations([[0, 0], [-1, 0], [0, -1], [1, -1]]), # S
-               rotations([[0, 0], [1, 0], [0, -1], [-1, -1]])] # Z
+  # class attribute holding all the pieces and their rotations
+  # Question: Does this mean square has lower probability to be chosen since it only have one rotation?
+  # A: No, in terms of first level array(purple color), square has the same probability as other pieces.
+  All_Pieces = [
+    # square (only needs one)
+    [[[0, 0], [1, 0], [0, 1], [1, 1]]],
+    # T
+    rotations([[0, 0], [-1, 0], [1, 0], [0, -1]]),
+    # long (only needs two)
+    [[[0, 0], [-1, 0], [1, 0], [2, 0]], [[0, 0], [0, -1], [0, 1], [0, 2]]],
+    rotations([[0, 0], [0, -1], [0, 1], [1, 1]]), # L
+    rotations([[0, 0], [0, -1], [0, 1], [-1, 1]]), # inverted L
+    rotations([[0, 0], [-1, 0], [0, -1], [1, -1]]), # S
+    rotations([[0, 0], [1, 0], [0, -1], [-1, -1]]) # Z
+  ]
 
-  # class array 
+  # class attribute
   All_Colors = ['DarkGreen', 'dark blue', 'dark red', 'gold2', 'Purple3', 
-               'OrangeRed2', 'LightSkyBlue']  
+               'OrangeRed2', 'LightSkyBlue']
 end
 
 
